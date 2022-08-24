@@ -1,5 +1,7 @@
 # README for  `qc_suite`
 
+Github repo for the [podman](https://podman.io/) conatiner [`qc_suite`](https://hub.docker.com/repository/docker/khench/qc_suite).
+
 ## Documentation of the initial setup
 
 Originally, the `qc_suite` container was build using [buildah](https://buildah.io/), from the accompanying `Containerfile`:
