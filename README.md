@@ -1,4 +1,4 @@
-# README for  `qc_suite`
+# README for  `qc_suite` <img src="logo.svg" align="right" alt="" width="120" />
 
 Github repo for the [podman](https://podman.io/) conatiner [`qc_suite`](https://hub.docker.com/repository/docker/khench/qc_suite).
 
