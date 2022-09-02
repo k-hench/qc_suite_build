@@ -29,6 +29,19 @@ RUN mkdir -p /manual_install/bin && \
     make && \
     mv ./bamcov /manual_install/bin/
 
+# install R dependencies
+RUN apt install -y dirmngr gnupg apt-transport-https ca-certificates software-properties-common
+
+# install R
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7' && \
+    add-apt-repository 'deb http://cloud.r-project.org/bin/linux/debian bullseye-cran40/'
+RUN apt install -y r-base-dev
+ENV LC_ALL=C.UTF-8
+# restrict R libs to the container (when using singularity) and fix system timezone
+RUN sed 's/^R_LIBS_USER/# R_LIBS_USER/' /etc/R/Renviron > /etc/R/Renviron.control && \
+    mv /etc/R/Renviron.control /etc/R/Renviron && \
+    echo 'TZ="UTC"' >> /etc/R/Renviron
+
 RUN cd /manual_install && \
     wget https://master.dl.sourceforge.net/project/ngs-art-deco/ART-DeCo.tar.gz && \
     tar -zxvf ART-DeCo.tar.gz && \
